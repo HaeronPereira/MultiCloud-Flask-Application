@@ -3,9 +3,9 @@
 import boto3
 import json
 
-region = "us-east-1"
+region = ""
 
-instances = 'i-0b093a0e74178f892'
+instances = ''
 
 ec2 = boto3.client("ec2", region_name=region)
 
@@ -32,7 +32,7 @@ def lambda_handler(event, context):
         status="Instance have stopped: " + str(instances)
     elif button==3:
         ec22=boto3.resource("ec2",region_name=region)
-        instances=ec22.create_instances (ImageId='ami-0d967e074c3a82453', MinCount=1,
+        instances=ec22.create_instances (ImageId='ami', MinCount=1,
         MaxCount=3,InstanceType='t2.micro', KeyName='us-east-1kp')
         #checking()
         instance=instances[0]
